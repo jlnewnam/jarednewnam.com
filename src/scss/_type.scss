@@ -1,0 +1,20 @@
+@use 'mixins' as *;
+@use 'vendors' as *;
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+
+  @include tablet-small {
+    font-size: 4rem;
+  }
+}
+
+h6 {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+
+  @include tablet-small {
+    font-size: 1.4rem;
+  }
+}
