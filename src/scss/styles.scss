@@ -1,27 +1,30 @@
-@use 'variables' as *;
-@use 'mixins' as *;
-@use 'type' as *;
-@use 'vendors' as *;
+@use 'variables'as *;
+@use 'mixins'as *;
+@use 'type'as *;
+@use 'vendors'as *;
 
 body {
   font-family: 'BioRhyme', sans-serif;
   font-size: 16px;
   background: $primary-color;
-  color: $text-color;
+  color: $darkgray;
 }
 
-html, body {
+html,
+body {
   height: 100vh;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 .container {
-  @include flex(column);
+  @include flex-center(column);
   height: 100vh;
   transition: $transition;
 
@@ -49,11 +52,8 @@ ul.social {
       transition: $transition;
 
       &:hover {
-        color: rgb(247,148,29);
+        color: rgb(247, 148, 29);
       }
     }
   }
 }
-
-
-

@@ -1,7 +1,17 @@
 //colors
 $primary-color: #7FC7BB;
-$text-color: darkslategray;
+$red: #D33A2C;
+$yellow: #E2C600;
+$orange: #FFAE39;
+$darkgray: darkslategray;
+$white: white;
 
 
-//other
+//shadows 
+$shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+//transition
 $transition: all .4s ease;
+
+//border-radius
+$radius: 6px;

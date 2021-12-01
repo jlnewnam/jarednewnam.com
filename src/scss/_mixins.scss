@@ -1,14 +1,23 @@
-@mixin flex-center {
+@mixin flex($direction) {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: $direction;
 }
 
-@mixin flex($direction) {
+@mixin flex-center($direction) {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: $direction;
+}
+
+@mixin flex-center-column {
+  @include flex-center;
+  flex-direction: column;
+}
+
+@mixin flex-center-row {
+  display: flex;
+  align-items: center;
 }
 
 //breakpoints

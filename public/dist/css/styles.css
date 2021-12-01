@@ -29,11 +29,14 @@ body {
   color: darkslategray;
 }
 
-html, body {
+html,
+body {
   height: 100vh;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
