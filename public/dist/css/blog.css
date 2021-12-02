@@ -4,7 +4,6 @@
 @import url("https://fonts.googleapis.com/css2?family=BioRhyme:wght@200;300;700;800&display=swap");
 h1 {
   font-size: 3rem;
-  text-align: center;
 }
 @media (min-width: 768px) {
   h1 {
@@ -23,7 +22,7 @@ h6 {
 }
 
 img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -67,9 +66,10 @@ header, main {
 }
 
 footer {
-  background: lightslategray;
+  background: inherit;
+  border-top: 1px solid darkslategray;
   text-align: center;
-  color: white;
+  color: darkslategray;
   padding: 20px;
   position: absolute;
   left: 0;
@@ -85,6 +85,27 @@ hr.top {
   margin: 1rem 0;
 }
 
+header h1 {
+  text-align: center;
+}
+header .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  header .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  header .content img {
+    max-width: 50%;
+  }
+}
+
 .tease-all {
   display: flex;
   flex-direction: column;
@@ -94,32 +115,34 @@ hr.top {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    flex: 1;
     flex-wrap: wrap;
   }
 }
 
 .tease-post {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 0.5rem 0.5rem 1rem;
+  background: #FFAE39;
+  flex: 100%;
+}
+.tease-post__container {
+  background: #3D8AB6;
+  padding: 0.5rem;
   border-radius: 6px;
-  background: #398ebe;
-  margin-right: 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-.tease-post:last-child {
-  margin-right: 0;
-}
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   .tease-post {
-    max-width: 47%;
+    flex: 50%;
   }
 }
-.tease-post + .tease-post {
-  margin-top: 1rem;
+@media (min-width: 1024px) {
+  .tease-post {
+    flex: 33.33333%;
+  }
 }
-@media (min-width: 576px) {
-  .tease-post + .tease-post {
-    margin-top: unset;
+@media (min-width: 1200px) {
+  .tease-post {
+    flex: 25%;
   }
 }
 .tease-post img.post__img {
@@ -187,6 +210,54 @@ a.tease-post__more {
   padding: 0.3rem 0.4rem;
   align-self: flex-end;
   bottom: 0;
+  transition: all 0.4s ease;
+}
+a.tease-post__more:hover {
+  background: #1e4358;
+  color: white;
+}
+
+.post header {
+  min-height: fit-content;
+  padding: 2rem 1.5rem;
+  background: #3D8AB6;
+}
+.post__title {
+  font-size: 1.875rem;
+  line-height: 2.5rem;
+  text-align: left;
+  font-weight: 800;
+}
+.post__sub {
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  font-weight: 400;
+}
+.post__meta {
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.post__title, .post__sub, .post__meta {
+  margin-top: 2rem;
+}
+.post article {
+  padding: 1rem 0;
+}
+.post article h3 + p {
+  margin-top: 1.5rem;
+}
+.post article p {
+  font-size: 1.1rem;
+  line-height: 2rem;
+}
+.post article p + p {
+  margin-top: 1.5rem;
+}
+.post article p + h3 {
+  margin-top: 1.5rem;
 }
 
 /*# sourceMappingURL=blog.css.map */

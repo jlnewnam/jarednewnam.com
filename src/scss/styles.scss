@@ -3,6 +3,14 @@
 @use 'type'as *;
 @use 'vendors'as *;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'BioRhyme', sans-serif;
   font-size: 16px;
@@ -15,12 +23,8 @@ body {
   height: 100vh;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+ul li {
+  list-style: none;
 }
 
 .container {
@@ -36,7 +40,6 @@ body {
 
 ul.social {
   display: flex;
-  list-style-type: none;
   margin-top: 2rem;
 
   @include tablet-small {
