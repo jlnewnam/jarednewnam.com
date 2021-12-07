@@ -3,7 +3,7 @@
 /* BioRhyme Font */
 @import url("https://fonts.googleapis.com/css2?family=BioRhyme:wght@200;300;700;800&display=swap");
 h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 @media (min-width: 768px) {
   h1 {
@@ -222,6 +222,15 @@ a.tease-post__more:hover {
   padding: 2rem 1.5rem;
   background: #3D8AB6;
 }
+.post header h4.go-back a {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+}
+.post header h4.go-back a h6 {
+  margin-left: 1rem;
+  text-transform: uppercase;
+}
 .post__title {
   font-size: 1.875rem;
   line-height: 2.5rem;
@@ -236,9 +245,12 @@ a.tease-post__more:hover {
 .post__meta {
   font-size: 0.75rem;
   line-height: 0.75rem;
-  font-weight: 800;
+  font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+.post__share {
+  margin-top: 1rem;
 }
 .post__title, .post__sub, .post__meta {
   margin-top: 2rem;
