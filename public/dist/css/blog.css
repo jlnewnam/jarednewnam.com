@@ -222,14 +222,17 @@ a.tease-post__more:hover {
   padding: 2rem 1.5rem;
   background: #3D8AB6;
 }
-.post header h4.go-back a {
+.post header .go-back a {
   display: flex;
   text-decoration: none;
   align-items: center;
+  font-size: 0.75rem;
+  color: white;
 }
-.post header h4.go-back a h6 {
+.post header .go-back a h6 {
   margin-left: 1rem;
   text-transform: uppercase;
+  font-size: 0.75rem;
 }
 .post__title {
   font-size: 1.875rem;
