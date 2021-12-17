@@ -1,67 +1,50 @@
 //articles
 const author = 'jared l newnam';
 const blogArticles = [{
-    author: author,
-    date: '11/24/2021',
-    title: 'the querySelectorAll DOM API',
+    date: "11/24/2021",
+    title: "the querySelectorAll DOM API",
     minutesToRead: 10,
-    tags: ['javascript', 'html'],
-    image: 'https://placekitten.com/1600/900',
-    altText: 'image of kittens',
-    teaser: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus blanditiis magni natus! Blanditiis quibusdam mod',
-    url: 'articles/brief-introduction-to-queryselectorall.html'
+    tags: ["javascript", "html"],
+    image: "https://placekitten.com/1600/900",
+    altText: "image of kittens",
+    teaser: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus blanditiis magni natus! Blanditiis quibusdam mod",
+    url: "articles/brief-introduction-to-queryselectorall.html"
   },
   {
-    author: author,
-    date: '11/24/2021',
-    title: 'the difference between named and anonymous functions',
+    date: "11/24/2021",
+    title: "the difference between named and anonymous functions",
     minutesToRead: 10,
-    tags: ['javascript', 'html'],
-    image: 'https://placekitten.com/1601/900',
-    altText: 'image of kittens',
-    teaser: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus blanditiis magni natus! Blanditiis quibusdam mod',
-    url: 'articles/brief-introduction-to-queryselectorall.html'
+    tags: ["javascript", "html"],
+    image: "https://placekitten.com/1601/900",
+    altText: "image of kittens",
+    teaser: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus blanditiis magni natus! Blanditiis quibusdam mod",
+    url: "articles/brief-introduction-to-queryselectorall.html"
   },
   {
-    author: author,
-    date: '11/24/2021',
-    title: 'css animations explained',
+    date: "11/24/2021",
+    title: "css animations explained",
     minutesToRead: 10,
-    tags: ['javascript', 'html'],
-    image: 'https://placekitten.com/1602/900',
-    altText: 'image of kittens',
-    teaser: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus blanditiis magni natus! Blanditiis quibusdam mod',
-    url: 'articles/brief-introduction-to-queryselectorall.html'
-  },
-  {
-    author: author,
-    date: '11/24/2021',
-    title: 'where have the birds gone',
-    minutesToRead: 10,
-    tags: ['javascript', 'html'],
-    image: 'https://placekitten.com/1603/900',
-    altText: 'image of kittens',
-    teaser: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus blanditiis magni natus! Blanditiis quibusdam mod',
-    url: 'articles/brief-introduction-to-queryselectorall.html'
+    tags: ["javascript", "html"],
+    image: "https://placekitten.com/1602/900",
+    altText: "image of kittens",
+    teaser: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus blanditiis magni natus! Blanditiis quibusdam mod",
+    url: "articles/brief-introduction-to-queryselectorall.html"
   }
 ];
 
-
-
-//pass blogArticles data
-function blogArticlesTemplate(articles) {
+function blogArticlesTemplate(articles, i) {
   return `
     <div class="tease-post">
       <div class="tease-post__container">
         <h5 class="tease-post__meta">
-          <span class="tease-post__meta--author">${articles.author}</span>
+        <span class="tease-post__meta--author">${author}</span>
           <span class="tease-post__meta--date">${articles.date}</span>
         </h5>
         <h2 class="tease-post__title"><a href="${articles.url}">${articles.title}</a></h2>
         <div class="tease-post__details">
           <h4><i class="fa fa-clock"></i> ${articles.minutesToRead} minute read</h4>
           <h4><i class="fa fa-tag"></i> ${articles.tags}</h4>
-          <h4><i class="fa fa-share-alt"></i> Share</h4>
+          <h4 class="share" data-article="${i}"><i class="fa fa-share-alt"></i> Share</h4>
         </div>
         <hr>
         <img class="tease-post__img" src="${articles.image}" alt="${articles.altText}">
@@ -75,35 +58,32 @@ function blogArticlesTemplate(articles) {
   `;
 }
 
-document.getElementById('blogTeaserList').innerHTML = `
-  ${blogArticles.map(blogArticlesTemplate).join('')}
-  `;
-
-//sharing
-const pageURL = window.location.href;
-const pageTitle = document.title;
-
-const shareData = {
-  title: "jarednewnam.com",
-  text: blogArticles.map(titles => titles.title),
-  url: blogArticles.map(urls => urls.readMore)
-};
-
-const shareButtons = document.querySelectorAll(".fa-share-alt");
+// `insertAdjacentHTML` is generally faster than using `.innerHTML`, as it doesn't need to tear down the old child-nodes of the container.
+const blogTeasterListElem = document.getElementById("blogTeaserList");
+blogTeasterListElem.insertAdjacentHTML(
+  "beforeend",
+  blogArticles.map(blogArticlesTemplate).join("")
+);
 
 if ("share" in navigator) {
-  shareButtons.forEach((shareButton) => {
-    shareButton.addEventListener("click", () => {
+  blogTeasterListElem.addEventListener("click", (e) => {
+    const clickedItem = e.target;
+    if (clickedItem.matches(".share")) {
+      const idx = Number(clickedItem.dataset.article);
       navigator
-        .share(shareData)
+        .share({
+          title: blogArticles[idx].title,
+          url: blogArticles[idx].url,
+          text: 'shared from jarednewnam.com',
+        })
         .then(() => {
-          console.log("Shared", shareData);
+          console.log("Shared");
         })
         .catch(console.error);
-    });
+    }
   });
 } else {
-  shareButtons.forEach((shareButton) => {
+  document.querySelectorAll(".share").forEach((shareButton) => {
     shareButton.style.display = "none";
   });
 }
