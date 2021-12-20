@@ -30,3 +30,17 @@ shareLinks.addEventListener('click', async () => {
   navigator.share(shareData);
 });
 
+//word counter
+(function countWords() {
+  let allText = document.querySelectorAll(".post p");
+  let count = 0;
+
+  for (var i = 0; i < allText.length; i++) {
+    count += allText[i].innerHTML.split(" ").length;
+  }
+  let wordsCounted = count;
+  let wpm = 225;
+  let readTime = (wordsCounted/wpm).toFixed(0);
+  wordCount.textContent = `${readTime} minute read`;  
+})();
+
